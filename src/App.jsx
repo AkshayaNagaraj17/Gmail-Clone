@@ -1,15 +1,26 @@
-
+import Body from "./Components/Body"
 import './App.css'
 import Nav from './Components/Nav'
-import Side from './Components/Side'
 
+import Mail from './Components/Mail'
+import {createBrowserRouter,RouterProvider} from 'react-router-dom'
+import Inbox from './Components/Inbox'
+const router=createBrowserRouter([
+  {
+    path:"/",element:<Body></Body>,children:[{path:'/',element:<Inbox></Inbox>}]
+  } ,
+  {
+    path:"/mail/:id",element:<Mail></Mail>
+  }
+])
 function App() {
   
 
   return (
     <div className='bg-slate-200 h-screen w-screen overflow-hidden'>
         <Nav></Nav>
-        <Side></Side>
+        <RouterProvider router={router}></RouterProvider>
+        
     </div>
   )
 }
